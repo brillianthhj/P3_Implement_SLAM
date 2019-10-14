@@ -97,13 +97,13 @@ class robot:
         
         for i in range(self.num_landmarks):
             
-            dx = self.x - self.landmarks[i][0]
-            dy = self.y - self.landmarks[i][1]
+            dx = self.landmarks[i][0] - self.x
+            dy = self.landmarks[i][1] - self.y
             
             dx = dx + self.rand() * self.measurement_noise
             dy = dy + self.rand() * self.measurement_noise
             
-            if abs(dx) < measurement_range and abs(dy) < measurement_range:
+            if abs(dx) < self.measurement_range and abs(dy) < self.measurement_range:
                 measurements.append([i, dx, dy])
                 
         return measurements
